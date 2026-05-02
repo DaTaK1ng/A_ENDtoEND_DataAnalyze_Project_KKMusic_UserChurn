@@ -55,6 +55,28 @@ The lineage graph shows how source data flows into staging models, intermediate 
 - **Risk-adjusted revenue exposure:** 4.64M price units
 - **Critical + high-risk concentration:** 1.47% of users account for 71.5% of risk exposure
 
+## Model Analysis Outputs
+
+These are the main model-analysis plots produced from the Jupyter modelling workflow.
+
+### Lift Chart
+
+![LightGBM calibrated lift chart](assets/model_lift_chart.png)
+
+Shows how much better the calibrated LightGBM model is than random targeting when selecting the top predicted-risk users. The top decile reaches about 3.97x lift.
+
+### Calibration Curve
+
+![Model calibration curve](assets/model_calibration_curve.png)
+
+Compares Logistic Regression, raw LightGBM, and calibrated LightGBM. Calibration matters because the predicted probabilities are later used for revenue-at-risk calculations.
+
+### SHAP Feature Importance
+
+![SHAP feature importance](assets/model_shap_importance.png)
+
+Explains which features have the largest average impact on the LightGBM churn prediction, supporting model interpretability for business review.
+
 ## Dashboard Preview
 
 ### Executive Overview
@@ -127,6 +149,7 @@ kkbox-churn-retention-analysis/
 ├── assets/
 │   ├── architecture.png
 │   ├── dbt_lineage.png
+│   ├── model_*.png
 │   └── dashboard_*.png
 ├── dbt_kkbox/
 │   └── models/
