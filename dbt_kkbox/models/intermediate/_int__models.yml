@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: int_user_member_profile
+    description: "User profile with age band and tenure days computed."
+    columns:
+      - name: msno
+        data_tests:
+          - unique
+          - not_null
+      - name: age_band
+        data_tests:
+          - accepted_values:
+              values: ['<20', '20-29', '30-39', '40-49', '50-59', '60+', 'unknown']
+
+  - name: int_user_transaction_summary
+    description: "User-level transaction summary as of observation_cutoff."
+    columns:
+      - name: msno
+        data_tests:
+          - unique
+          - not_null
+
+  - name: int_user_engagement_windows
+    description: "User-level engagement metrics for 7/15/30/60-day windows ending at engagement_window_end."
+    columns:
+      - name: msno
+        data_tests:
+          - unique
+          - not_null

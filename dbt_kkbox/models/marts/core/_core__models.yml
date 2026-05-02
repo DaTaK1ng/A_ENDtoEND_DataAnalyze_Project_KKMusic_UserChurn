@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: dim_user
+    description: "User dimension. One row per user."
+    columns:
+      - name: msno
+        data_tests:
+          - unique
+          - not_null
+
+  - name: fct_subscription_transaction
+    description: "Subscription transaction fact table. One row per transaction event."
+    columns:
+      - name: msno
+        data_tests:
+          - not_null
+      - name: transaction_date
+        data_tests:
+          - not_null
+
+  - name: fct_user_listening_daily
+    description: "Daily listening fact table. One row per user per day."
+    columns:
+      - name: msno
+        data_tests:
+          - not_null
+      - name: listen_date
+        data_tests:
+          - not_null
+
+  - name: fct_churn_label
+    description: "Churn label fact table. One row per labelled user."
+    columns:
+      - name: msno
+        data_tests:
+          - unique
+          - not_null
+      - name: is_churn
+        data_tests:
+          - accepted_values:
+              values: [0, 1]

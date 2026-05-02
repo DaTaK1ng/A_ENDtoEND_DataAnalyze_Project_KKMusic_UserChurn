@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: mart_user_churn_features
+    description: "Modelling-ready user feature table. One row per labelled user."
+    columns:
+      - name: msno
+        data_tests:
+          - unique
+          - not_null
+      - name: is_churn
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+
+  - name: mart_segment_summary
+    description: "Segment-level KPIs with confidence intervals; segments with n < 30 suppressed."
+    columns:
+      - name: user_count
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 30"
+
+  - name: mart_dashboard_monthly
+    description: "Monthly KPI rollup for the executive dashboard."
+    columns:
+      - name: month
+        data_tests:
+          - unique
+          - not_null

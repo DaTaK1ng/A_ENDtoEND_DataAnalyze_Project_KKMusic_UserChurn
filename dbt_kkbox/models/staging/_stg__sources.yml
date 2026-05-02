@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: kkbox
+    description: "Raw KKBox CSV files in data/raw/. Loaded via DuckDB read_csv_auto."
+    meta:
+      external_location: "{{ var('raw_data_path') }}"
+    tables:
+      - name: members_v3
+        description: "User profile, ~6.7M rows."
+        external:
+          location: "{{ var('raw_data_path') }}/members_v3.csv"
+      - name: members_v1
+        description: "Optional v1 members file. Only present if user downloaded the original members.csv."
+        external:
+          location: "{{ var('raw_data_path') }}/members.csv"
+      - name: transactions_v2
+        description: "Subscription events for March 2017 expiry users, ~1.4M rows."
+        external:
+          location: "{{ var('raw_data_path') }}/transactions_v2.csv"
+      - name: transactions_v1
+        description: "Optional v1 transactions file."
+        external:
+          location: "{{ var('raw_data_path') }}/transactions.csv"
+      - name: user_logs_v2
+        description: "Daily listening behaviour, ~18M rows in v2."
+        external:
+          location: "{{ var('raw_data_path') }}/user_logs_v2.csv"
+      - name: user_logs_v1
+        description: "Optional v1 user logs (~410M rows, 28GB)."
+        external:
+          location: "{{ var('raw_data_path') }}/user_logs.csv"
+      - name: train_v2
+        description: "Churn labels for ~970K users, March 2017 expiry."
+        external:
+          location: "{{ var('raw_data_path') }}/train_v2.csv"
+      - name: train_v1
+        description: "Optional v1 labels."
+        external:
+          location: "{{ var('raw_data_path') }}/train.csv"

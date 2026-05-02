@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: stg_members
+    description: "Cleaned member profile, one row per user. bd cleaned to age (10-80), gender normalised, registration_init_time parsed."
+    columns:
+      - name: msno
+        description: "Anonymised user ID."
+        data_tests:
+          - unique
+          - not_null
+      - name: city
+        description: "City code."
+      - name: age
+        description: "Cleaned age in [10, 80]; null if unrealistic."
+      - name: gender
+        description: "male / female / unknown."
+        data_tests:
+          - accepted_values:
+              values: ['male', 'female', 'unknown']
+      - name: registered_via
+        description: "Registration channel code."
+        data_tests:
+          - not_null
+      - name: registration_init_time
+        description: "Registration date."
+        data_tests:
+          - not_null
+
+  - name: stg_transactions
+    description: "Cleaned transactions; dates parsed; discount_rate and price_per_day pre-computed."
+    columns:
+      - name: msno
+        description: "User ID."
+        data_tests:
+          - not_null
+      - name: transaction_date
+        description: "Transaction date."
+        data_tests:
+          - not_null
+      - name: membership_expire_date
+        description: "Membership expiry date."
+        data_tests:
+          - not_null
+      - name: is_auto_renew
+        data_tests:
+          - accepted_values:
+              values: [0, 1]
+      - name: is_cancel
+        data_tests:
+          - accepted_values:
+              values: [0, 1]
+
+  - name: stg_user_logs
+    description: "Daily listening events. completion_rate and total_plays pre-computed."
+    columns:
+      - name: msno
+        data_tests:
+          - not_null
+      - name: listen_date
+        data_tests:
+          - not_null
+
+  - name: stg_churn_labels
+    description: "Churn labels for users with March 2017 expiry."
+    columns:
+      - name: msno
+        data_tests:
+          - unique
+          - not_null
+      - name: is_churn
+        data_tests:
+          - accepted_values:
+              values: [0, 1]

@@ -1,0 +1,45 @@
+# Python 3.11 is recommended for full compatibility and reproducibility.
+# Create venv: python3 -m venv .venv && source .venv/bin/activate
+
+# Data engine and transformation
+duckdb>=0.10.0
+dbt-core>=1.7,<1.9
+dbt-duckdb>=1.7,<1.9
+
+# Notebooks
+jupyter>=1.0
+ipykernel>=6.29
+
+# Data manipulation
+pandas>=2.1
+numpy>=1.26
+pyarrow>=14.0
+
+# Modelling
+scikit-learn>=1.4
+lightgbm>=4.3
+shap>=0.45
+
+# Statistics
+statsmodels>=0.14
+scipy>=1.12
+
+# Visualisation (notebook plots; Tableau dashboards are separate)
+matplotlib>=3.8
+seaborn>=0.13
+
+# Data download
+kaggle>=1.7
+
+# Optional: BigQuery cloud demo (uncomment for week 6)
+# google-cloud-bigquery>=3.17
+# pandas-gbq>=0.20
+# db-dtypes>=1.2
+
+# Quality of life
+tqdm>=4.66
+python-dotenv>=1.0
+
+# macOS + LightGBM note:
+# if importing lightgbm fails with "libomp.dylib not found",
+# run: brew install libomp

@@ -1,0 +1,35 @@
+name: kkbox
+version: '1.0.0'
+config-version: 2
+
+profile: kkbox
+
+model-paths: ["models"]
+
+clean-targets:
+  - target
+  - dbt_packages
+
+vars:
+  raw_data_path: "../data/raw"
+  observation_cutoff: '2017-03-01'
+  expiry_window_start: '2017-03-01'
+  expiry_window_end:   '2017-03-31'
+  engagement_window_end: '2017-02-28'
+
+models:
+  kkbox:
+    +materialized: table
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+    marts:
+      core:
+        +materialized: table
+        +schema: core
+      analytics:
+        +materialized: table
+        +schema: analytics

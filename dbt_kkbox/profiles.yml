@@ -1,0 +1,12 @@
+kkbox:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../data/processed/kkbox.duckdb
+      threads: 4
+
+    prod:
+      type: duckdb
+      path: ../data/processed/kkbox_prod.duckdb
+      threads: 4
