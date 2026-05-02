@@ -4,7 +4,7 @@ End-to-end subscription analytics project built on KKBox churn data. The project
 
 ## Live Deliverables
 
-- **Final business report:** [`reports/reprot.pdf`](reports/reprot.pdf)
+- **Final business report:** [`reports/report.pdf`](reports/report.pdf)
 - **Tableau Public dashboard:** <https://public.tableau.com/app/profile/tianyi.ren4423/viz/Book1_17777346522100/D1_Overview>
 - **Tableau workbook:** [`tableau/Book1.twbx`](tableau/Book1.twbx)
 - **dbt project and lineage docs:** [`dbt_kkbox/`](dbt_kkbox/)
@@ -123,7 +123,7 @@ ROI sensitivity shows that a 10% discount can be profitable under modest churn r
 kkbox-churn-retention-analysis/
 ├── README.md
 ├── reports/
-│   └── reprot.pdf
+│   └── report.pdf
 ├── assets/
 │   ├── architecture.png
 │   ├── dbt_lineage.png

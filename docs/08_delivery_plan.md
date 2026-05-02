@@ -58,7 +58,7 @@
 ### Phase 7 — Reporting and Portfolio
 
 - Executive summary in `reports/executive_summary.md`.
-- One-page report PDF in `reports/reprot.pdf`.
+- One-page report PDF in `reports/report.pdf`.
 - Polish GitHub README and pin Tableau Public + dbt docs links.
 - Write A/B test design doc and monitoring simulation.
 
